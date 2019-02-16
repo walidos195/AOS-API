@@ -1,0 +1,125 @@
+<section *ngFor="let ad of adverts">
+
+  <!--The content below is only a placeholder and can be replaced.-->
+  <div class="breadcrumb-wrapper">
+    <div class="container">
+      <div class="banner-title">
+        <h2>{{ad.title}}</h2>
+
+        <div class="line">
+          <span></span>
+        </div>
+      </div>
+      <ul class="inner-breadcrumb">
+        <li>
+          <a routerLink="/home">Home</a>
+        </li>
+
+        <li>
+          <a routerLink="/annonces">Offre</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <br>
+  <div class="wrapper wrapperv2">
+
+    <nav id="sidebar" [collapse]="isCollapsed">
+      <div class="sidebar-header">
+        <h3>Infos </h3>
+      </div>
+
+      <ul class="list-unstyled components">
+
+        <li>
+          <a href="#type" data-toggle="collapse" aria-expanded="true">Type de contrat</a>
+          <ul class="collapse in list-unstyled" id="type">
+            <li>
+              <p>{{ad.type}}</p>
+            </li>
+
+          </ul>
+        </li>
+        <li>
+          <a href="#publie" data-toggle="collapse" aria-expanded="true">Publiée</a>
+          <ul class="collapse in list-unstyled" id="publie">
+            <li>
+              <p></p>
+            </li>
+
+          </ul>
+        </li>
+        <li>
+          <a href="#duree" data-toggle="collapse" aria-expanded="true">Durée</a>
+          <ul class="collapse in list-unstyled" id="duree">
+            <li>
+              <p>{{ad.duree}} mois</p>
+            </li>
+
+          </ul>
+        </li>
+        
+        <li>
+          <a href="#begin" data-toggle="collapse" aria-expanded="true">Début du contrat</a>
+          <ul class="collapse in list-unstyled" id="begin">
+            <li>
+              <p>{{ad.begin}}</p>
+            </li>
+
+          </ul>
+
+        </li>
+      </ul>
+
+      <ul class="list-unstyled CTAs">
+
+        
+          
+          <li *ngIf="!isPost && isAuth"> 
+            <a class="postuler" (click)="postuler()">Postuler</a>
+            
+          </li>
+          
+          <li *ngIf="isPost && isAuth">
+            
+          <a class="postuler">Postulé!</a>
+        </li>
+
+            <li *ngIf="!isAuth">
+              <p>Une connexion est nécessaire pour postuler</p>
+            </li>
+        <li *ngIf="!isAuth">
+          <a routerLink="/auth" class="postuler">Connexion</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container text-center">
+      <!-- Sidebar Holder -->
+
+
+
+
+
+      <div
+      [ngClass]="{'text-left content   ': true,
+                'col-md-12 col-sm-12': isCollapsed === true,
+                'col-md-10 col-sm-10': isCollapsed === false}"
+      
+                >
+
+        <button type="button" id="sidebarCollapse" class="navbar-btn" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+          aria-controls="sidebar">
+        <i *ngIf="isCollapsed" class="fa fa-plus"></i>
+        <i *ngIf="!isCollapsed" class="fa fa-minus"></i>
+        </button>
+        <br>
+        <h3>Description</h3>
+        <p>
+          {{ad.description}}
+        </p>
+        <h3>Détails:</h3>
+        <div [innerHTML]="ad.detail"></div>
+      </div>
+      </div>
+  </div>

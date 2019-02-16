@@ -1,0 +1,148 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="breadcrumb-wrapper">
+  <div class="container">
+    <div class="banner-title">
+      <h2>Liste des annonces</h2>
+
+      <div class="line">
+        <span></span>
+      </div>
+    </div>
+    <ul class="inner-breadcrumb">
+      <li>
+        <a routerLink="home">Home</a>
+      </li>
+
+      <li>Offre</li>
+    </ul>
+  </div>
+</div>
+
+<div id="filter-panel" class="collapse filter-panel">
+<ul class="drawer">
+  <li>
+    <a >
+      <i class=" fa fa-file"></i>
+      <span>Type du contrat</span>
+    </a>
+    <ul>
+      <li>
+        <a (click)="contratpush('stage')" target="_blank" [ngClass]="{'draweractive': inContrat('stage')}">
+          <i class="fa fa-file"></i>
+          <span>Stage</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="contratpush('cdd')" target="_blank" [ngClass]="{'draweractive': inContrat('cdd')}">
+          <i class="fa fa-file"></i>
+          <span>CDD</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="contratpush('cdi')" target="_blank" [ngClass]="{'draweractive': inContrat('cdi')}">
+          <i class="fa fa-file"></i>
+          <span>CDI</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a >
+      <i class="fa fa-search"></i>
+      <span>Recherche</span>
+    </a>
+    <ul>
+      <li>
+       <a>
+        <div class="form-group has-feedback">
+
+          <input type="text" [(ngModel)]="search"  name="search" class="form-control input-sm rounded" id="pref-search">
+          <span class=" form-control-feedback glyphicon glyphicon-search"></span>
+        </div>
+        </a>
+        
+      </li>
+     
+    </ul>
+  </li>
+  <li>
+    <a >
+      <i class="fa fa-sort"></i>
+      <span>Tri Par:</span>
+    </a>
+    <ul>
+      <li>
+        <a (click)="order='title'" target="_blank" [ngClass]="{'draweractive': order==='title'}">
+          <i class="fa fa-h-square"></i>
+          <span>Titre</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="order='begin'" target="_blank" [ngClass]="{'draweractive': order==='begin'}">
+              <i class="fa fa-calendar"></i>
+              <span>Date du début de contrat</span>
+            </a>
+      </li>
+      <li>
+        <a (click)="order='date'" target="_blank" [ngClass]="{'draweractive': order==='dat'}">
+              <i class="fa fa-calendar"></i>
+              <span>Date d'ajout d'annonce</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="order='type'" target="_blank" [ngClass]="{'draweractive': order==='type'}">
+          <i class="fa fa-file"></i>
+          <span>Type du contrat</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a >
+      <i class="fa  fa-sort"></i>
+      <span>Sens</span>
+    </a>
+    <ul>
+        <li>
+            <a (click)="reverse=false" target="_blank" [ngClass]="{'draweractive': reverse===false}">
+                <i class="fa fas fa-sort-down"></i>
+                <span>Croissant</span>
+              </a>
+          
+        </li>
+        <li>
+            <a (click)="reverse=true" target="_blank" [ngClass]="{'draweractive': reverse===true}">
+                <i class="fa fas fa-sort-up"></i>
+                <span>Décroissant</span>
+              </a>
+          
+        </li>
+     
+    </ul>
+  </li>
+</ul>
+
+</div>
+
+<!-- Not required for demo -->
+<div class="ild-ident">
+  
+  <!-- "IL" logo Copyright (c) Ian Lunn Design Limited 2015 -->
+  <a   data-toggle="collapse" data-target="#filter-panel" style="margin-bottom: 12px;" target="_blank" title="Ian Lunn">
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 23h-24v-22h24v22zm-2-20h-14v18h14v-18zm-4 4l-6 5 6 5v-10z"/></svg> 
+   
+  </a>
+</div>
+<div class="col-sm-push-1 col-md-push-1  col-xs-push-1 col-xs-10  col-md-10 col-sm-10 text-left contentp" style="padding-top:24px;">
+  
+  
+
+  <app-advert *ngFor="let annonce of annonces | contrat:contrat:annonces | filter :search | orderBy: order : reverse | paginate: { itemsPerPage: 2, currentPage: p }"  [title]="annonce.title" [description]="annonce.description" [id]="annonce.id">
+
+  </app-advert>
+
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+</div>

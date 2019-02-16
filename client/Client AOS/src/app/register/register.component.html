@@ -1,0 +1,54 @@
+<div class="login-container">
+  <div class="loginbox">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+        <div [ngClass]="{'form-group has-feedback': true, 'has-warning':!userForm.controls['username'].valid, 'has-success':userForm.controls['username'].valid  }">
+       
+        <label>Username:
+          <span class="required">*</span>
+        </label>
+        <input placeholder="" class="form-control" type="text" formControlName="username">
+        <span [ngClass]="{'glyphicon  form-control-feedback': true, 'glyphicon-warning-sign':!userForm.controls['username'].valid, 'glyphicon-ok ':userForm.controls['username'].valid  }"></span>
+        
+      </div>
+      <div [ngClass]="{'form-group has-feedback': true, 'has-warning':!userForm.controls['email'].valid, 'has-success':userForm.controls['email'].valid  }">
+        <label>Email:
+          <span class="required">*</span>
+        </label>
+        <input placeholder="" class="form-control form-" type="email" formControlName="email">
+        <span [ngClass]="{'glyphicon  form-control-feedback': true, 'glyphicon-warning-sign':!userForm.controls['email'].valid, 'glyphicon-ok ':userForm.controls['email'].valid  }"></span>
+        <app-control-messages [control]="userForm.controls['email']"></app-control-messages>
+
+      </div>
+      <div [ngClass]="{'form-group has-feedback': true, 'has-warning':!userForm.controls['password'].valid, 'has-success':userForm.controls['password'].valid  }">
+        <label>Password:
+          <span class="required">*</span>
+        </label>
+        <input placeholder="" class="form-control" type="password" formControlName="password">
+        <span [ngClass]="{'glyphicon  form-control-feedback': true, 'glyphicon-warning-sign':!userForm.controls['password'].valid, 'glyphicon-ok ':userForm.controls['password'].valid  }"></span>
+
+        <app-control-messages [control]="userForm.controls['password']"></app-control-messages>
+      </div>
+      <div [ngClass]="{'form-group has-feedback': true, 'has-warning':!userForm.controls['confirmpass'].valid, 'has-success':userForm.controls['confirmpass'].valid  }">
+          
+        <label>Confirm Password:
+          <span class="required">*</span>
+        </label>
+        <input placeholder="" class="form-control" type="password" formControlName="confirmpass">
+        <span [ngClass]="{'glyphicon  form-control-feedback': true, 'glyphicon-warning-sign':!userForm.controls['confirmpass'].valid, 'glyphicon-ok ':userForm.controls['confirmpass'].valid  }"></span>
+        
+        <app-control-messages [control]="userForm.controls['confirmpass']"></app-control-messages>
+      </div>
+      <div class="loginbox-forgot">
+        <input type="checkbox"> I accept
+        <a href="">Term and consitions?</a>
+      </div>
+      <div class="loginbox-submit">
+        <button type="submit" class="btn btn-default btn-block" [disabled]="userForm.invalid">Soumettre</button>
+
+      </div>
+      <div class="loginbox-signup"> Already have account
+        <a href="javascript:void(0)">Sign in</a>
+      </div>
+    </form>
+  </div>
+</div>

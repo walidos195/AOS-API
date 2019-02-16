@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group">
+        <label for="title">
+          Titre de l'annonce
+        </label>
+        <input type="text" id="title" class="form-control" name="title" required ngModel>
+      </div>
+      <div class="form-group">
+        <label for="description">
+          Description de l'annonce
+        </label>
+        <input type="text" id="description" name="description" class="form-control" required ngModel>
+      </div>
+      <div class="form-group">
+        <label for="etat">
+          État de l'annonce
+        </label>
+        <select id="etat" class="form-control" name="etat"  [ngModel]="etatdefault" ngModel>
+          <option value="on">On</option>
+          <option value="off">Off</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Enregistrer</button>
+    </form>
+  </div>
+</div>
