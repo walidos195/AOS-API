@@ -27,7 +27,7 @@ export class ApplicationService {
     getApplications(idAdvert:string): Observable<any[]> {
         let httpParams = new HttpParams()
         .set('idadvert', idAdvert);
-        return this.http.get<Advert[]>('http://127.0.0.1:8000/Applications', {
+        return this.http.get<Advert[]>('https://api.railsinfo.fr/Applications', {
             params: httpParams,
         })
         .catch(this.handleError);
@@ -36,11 +36,11 @@ export class ApplicationService {
 
 
     setAdvert(id,advert): Observable<any[]> {
-        return this.http.put<Advert[]>('http://127.0.0.1:8000/Application/'+id+'',advert)
+        return this.http.put<Advert[]>('https://api.railsinfo.fr/Application/'+id+'',advert)
         .catch(this.handleError);
     }  
     addAdvert(advert): Observable<any[]> {
-        return this.http.post<Advert[]>('http://127.0.0.1:8000/Application',advert)
+        return this.http.post<Advert[]>('https://api.railsinfo.fr/Application',advert)
         .catch(this.handleError);
     }
     private handleError (error: Response | any) {

@@ -27,25 +27,25 @@ export class AdvertService {
 
     getAdvert(): Observable<any[]> {
 
-        return this.http.get<Advert[]>('http://127.0.0.1:8000/Annonce'   )
+        return this.http.get<Advert[]>('https://api.railsinfo.fr/Annonce'   )
       .catch(this.handleError);
     }
 
     getAdvertId(id): Observable<any[]> {
-        return this.http.get<Advert[]>('http://127.0.0.1:8000/Annonce/'+id+'')
+        return this.http.get<Advert[]>('https://api.railsinfo.fr/Annonce/'+id+'')
         
           .catch(this.handleError);
     }
     setAdvert(id,advert): Observable<any[]> {
-        return this.http.put<Advert[]>('http://127.0.0.1:8000/Annonce/'+id+'',advert)
+        return this.http.put<Advert[]>('https://api.railsinfo.fr/Annonce/'+id+'',advert)
           .catch(this.handleError);;
     }  
     addAdvert(advert): Observable<any[]> {
-        return this.http.post<Advert[]>('http://127.0.0.1:8000/Annonce',advert  )
+        return this.http.post<Advert[]>('https://api.railsinfo.fr/Annonce',advert  )
           .catch(this.handleError);
     }
     deleteAdvert(id): Observable<any[]> {
-        return this.http.delete<Advert[]>('http://127.0.0.1:8000/Annonce/'+id+'' )
+        return this.http.delete<Advert[]>('https://api.railsinfo.fr/Annonce/'+id+'' )
           .catch(this.handleError);
     }
     
