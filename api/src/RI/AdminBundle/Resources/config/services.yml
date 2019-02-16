@@ -1,4 +1,0 @@
-services:
-#    ri_admin.example:
-#        class: RI\AdminBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,3 +1,0 @@
-register:
-    path:     /admin/register
-    defaults: { _controller: RIAdminBundle:Access:register }
