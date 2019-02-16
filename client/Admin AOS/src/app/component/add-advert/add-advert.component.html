@@ -1,0 +1,50 @@
+<form [formGroup]="advertForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+
+    <label>
+      Titre:
+    </label>
+    <input class="form-control" type="text" formControlName="title">
+  </div>
+
+  <div class="form-group">
+    <label for="description">
+      Description
+    </label>
+    <textarea class="form-control" formControlName="description"></textarea>
+  </div>
+  <div class="form-group">
+    <label>
+      Détail
+    </label>
+    <textarea class="form-control" formControlName="detail"></textarea>
+  </div>
+  <div class="form-group">
+    <label>
+      Type:
+    </label>
+    <select class="form-control" formControlName="type">
+      <option *ngFor="let contrat of contrats" [value]="contrat.name">{{contrat.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    
+    <label>
+      Date début de contrat:
+    </label>
+    <input class="form-control" id="begin" type="date" formControlName="begin">
+   
+  </div>
+  
+  <div class="form-group">
+  <label>
+    Durée de contrat:
+  </label>
+  <input class="form-control" type="number" formControlName="duree">
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!advertForm.valid">Enregistrer la modification</button>
+  <a name="" style="margin-left: 5px" class="btn btn-success"(click)="onView()" role="button">Visualiser</a>
+  <a name="" style="margin-left: 5px" class="btn btn-warning"(click)="onReturn()" role="button">Retour</a>
+  
+</form>

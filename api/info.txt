@@ -1,0 +1,2 @@
+API fait à l'aide du symfony
+J'ai mis sur git seulement les contrôleur nécessaire pour mieux comprendre le code et les entité aussi (base de données)

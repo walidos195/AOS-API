@@ -1,0 +1,65 @@
+<div *ngIf="ready">
+
+  <h3>{{annonce.title}}</h3>
+  
+  <h5>Description</h5>
+  
+  <p>
+    
+    {{annonce.description}}
+  </p>
+  <br>
+  <h5>Détail</h5>
+  
+  <p>
+    
+      {{annonce.detail}}
+    </p>
+    
+    <h5>
+        Type:
+      </h5>
+      <p >
+        {{annonce.type}}
+      </p>
+      
+      <h5>
+        Date début de contrat:
+   </h5>
+   <p>{{annonce.begin}}</p>
+     
+   
+   
+   <h5>
+      Durée de contrat:
+    </h5>
+      
+    
+   <p>{{annonce.duree}} mois</p>
+   
+   <a name="" style="margin-left: 5px" class="btn btn-primary"(click)="onUpdate()" role="button">Modifier</a> 
+   <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" style="margin-left: 5px" data-target="#delete" (click)="open(delete,'delete',annonce.id)">
+    <i class="fa fa-trash  fa-fw " style="font-size:23px"></i> Supprimer
+  </button>
+   <a name="" style="margin-left: 5px" class="btn btn-warning"(click)="onReturn()" role="button">Retour</a>
+    
+  </div>
+
+  <div>
+    <app-application></app-application>
+  </div>
+<ng-template #delete let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Supprimer l'annonce</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Vous êtes sur de vouloir supprimer l'annonce?</p>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Ok click')">Confirmer</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('cancel click')">Annuler</button>
+  </div>
+</ng-template>

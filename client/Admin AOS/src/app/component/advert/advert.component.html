@@ -1,0 +1,238 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+      
+        <div class="row">
+
+          <div class="col">
+            <input type="text" style="    width: 104%;
+            margin: 6px;
+            border-radius: 8px;
+            border-width: 1px;" placeholder="Recherche" [(ngModel)]="search">
+          </div>
+          <div class="col">
+            <div class="btn-group mr-3">
+              <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Trier par</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button class="dropdown-item" (click)="Order('title')">Titre
+                    <i [ngClass]="{  ' fa-sort-asc':reverse == true && order=='title',    ' fa-sort-desc':reverse == false && order=='title' ,'fa fa-fw' :true   }"></i>
+                  </button>
+                  <button class="dropdown-item" (click)="Order('description')">Description
+                    <i [ngClass]="{  ' fa-sort-asc':reverse == true && order=='description',    ' fa-sort-desc':reverse == false && order=='description' ,'fa fa-fw' :true   }"></i>
+                  </button>
+                  <button class="dropdown-item" (click)="Order('date')">Date d'ajout
+                    <i [ngClass]="{  ' fa-sort-asc':reverse == true && order=='date',    ' fa-sort-desc':reverse == false && order=='date' ,'fa fa-fw' :true   }"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+                <button class="btn btn-outline-success" ngbDropdownToggle>Filter
+                  <i class="fa fa-filter    "></i>
+                </button>
+                <div class="dropdown-menu" ngbDropdownMenu>
+                  <button class="dropdown-item" (click)="addFilter('title')">Titre</button>
+                  <button class="dropdown-item" (click)="addFilter('contrat')">Contrat</button>
+                  <button class="dropdown-item" (click)="addFilter('dispo')">Disponibilité</button>
+                </div>
+              </div>
+              <button type="button" (click)="sub()" class="btn btn-outline-success">Actualiser
+                <i class="fa fa-refresh"></i>
+              </button>
+            </div>
+
+          </div>
+
+
+          <div class="col text-right">
+              <a (click)="Display(0)" class="btn btn-default navbar-btn btn-sm active">
+                <i class="fa fa-list fa-fw"></i>
+              </a>
+              <a (click)="Display(1)" class="btn btn-default navbar-btn btn-sm">
+                <i class="fa fa-th-large fa-fw"></i>
+              </a>
+            </div>
+            <div class="col text-right">
+                <a (click)="goTo('add',0)" class="btn btn-default navbar-btn btn-sm active">
+                  <i class="fa fa-plus fa-fw"></i>
+                </a>
+              </div>
+
+        </div>
+        <blockquote id="collapseExample" [ngbCollapse]="isCollapsed">
+          <div class="row " >
+              <div class="row col " *ngIf="inArray(filters,'title')==true">
+
+                  
+                  <div class="col-md-11">
+                      <label for="filter_title_value" class="control-label">Title</label>
+                    <input type="text" id="filter_title_value"  [(ngModel)]="ftitle" class=" form-control">
+                  </div>
+
+                  <div><i (click)="addFilter('title')" class="fa fa-close" aria-hidden="true"></i></div>
+                </div>
+                <div class="row col" *ngIf="inArray(filters,'contrat')==true">
+
+                    
+                    
+                    <div class="col-md-11">
+                        <label for="filter_contrat_value" class=" control-label">Contrat</label>
+                      <div class="col"><label style="margin-right: 10px;" for="fcdi">CDI</label> <input type="checkbox" (click)="contratpush('cdi')" id="fcdi" ></div>
+                      <div class="col"><label style="margin-right: 10px;" for="ffreelance">Freelance</label> <input type="checkbox" (click)="contratpush('cdd')"   id="ffreelance"></div>
+                      <div class="col"><label style="margin-right: 10px;" for="fstage">Stage</label> <input type="checkbox" (click)="contratpush('stage')"  id="fstage"></div>
+                      
+                    </div>
+                    <div><i (click)="addFilter('contrat')" class="fa fa-close" aria-hidden="true"></i></div>
+                  </div>
+                  
+                  <div class="row col" *ngIf="inArray(filters,'dispo')==true">
+
+                    <div class="col-md-11">
+                      <label for="filter_dispo_value" class="control-label">Disponibilité</label>
+                          <form class="form-inline">
+                              <div class="form-group">
+                                <div class="input-group">
+                                  <input class="form-control" id="filter_dispo_value" [(ngModel)]="fdispo" placeholder="yyyy-mm-dd"
+                                         name="dp"  ngbDatepicker #d="ngbDatepicker">
+                                  <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                      </div>
+
+                    <div><i (click)="addFilter('dispo')" class="fa fa-close" aria-hidden="true"></i></div>
+                    </div>
+                    
+                    <div><i (click)="closeFilter()" class="fa fa-close" style="font-size: 24px" aria-hidden="true"></i></div>
+                  </div>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="justify-content-center">
+        <p *ngIf="empty" > Aucune annonce :( !! <a class="btn btn-primary" style="color:white" (click)="goTo('add',0)">Ajouter une nouvelle annonce</a></p>
+     </div> 
+  <table class="table table-bordred table-striped" *ngIf="display=='list'">
+
+    <thead>
+
+      <th>
+        <input type="checkbox" id="checkall" />
+      </th>
+
+      <th>
+          <a (click)="Order('title')">Titre</a>
+          <i [ngClass]="{  ' fa-sort-asc':reverse == true && order=='title',    ' fa-sort-desc':reverse == false && order=='title' ,'fa fa-fw' :true   }"></i>
+        </th>
+        <th>
+            <a (click)="Order('type')">Type</a>
+            <i [ngClass]="{  ' fa-sort-asc':reverse == true && order=='type',    ' fa-sort-desc':reverse == false && order=='type' ,'fa fa-fw' :true   }"></i>
+          </th>
+      <th>
+        <a (click)="Order('description')">Description</a>
+        <i [ngClass]="{  ' fa-sort-asc':reverse == true && order=='description',    ' fa-sort-desc':reverse == false && order=='description' ,'fa fa-fw' :true   }"></i>
+      </th>
+      <th style="min-width: 155px; ">
+        <a (click)="Order('date')">Date d'ajout</a>
+        <i [ngClass]="{  ' fa-sort-asc':reverse == true && order=='date',    ' fa-sort-desc':reverse == false && order=='date' ,'fa fa-fw' :true   }"></i>
+      </th>
+      <th>View</th>
+      <th>Edit</th>
+
+      <th>Delete</th>
+    </thead>
+   
+    <tbody *ngFor="let annonce of annonces| contrat:contrat:annonces  |   filter :search  |   title :ftitle | fdate:fdispo | orderBy: order : reverse |paginate: { itemsPerPage: y, currentPage: p }">
+        <p *ngIf="empty" > Aucune annonce :( !! <a>Ajouter une annonce</a></p>
+      <tr>
+        <td>
+          <input type="checkbox" class="checkthis" />
+        </td>
+        <td>{{annonce.title}}</td>
+
+        <td>{{annonce.type}}</td>
+        <td>{{annonce.description|limite:230}}...</td>
+        <td>{{annonce.date|date}} </td>
+        <td>
+            <p data-placement="top" data-toggle="tooltip" title="View">
+              <button class="btn btn-success btn-xs" data-title="View" data-toggle="modal" data-target="#view" (click)="goTo('view',annonce.id)" >
+                <i class="fa fa-eye  fa-fw " style="font-size:23px"></i>
+              </button>
+            </p>
+          </td>
+          <td>
+              <p data-placement="top" data-toggle="tooltip" title="Edit">
+                <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" (click)="goTo('edit',annonce.id)" >
+                  <i class="fa fa-edit  fa-fw " style="font-size:23px"></i>
+                </button>
+              </p>
+            </td>
+        <td>
+          <p data-placement="top" data-toggle="tooltip" title="Delete">
+            <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" (click)="open(delete,'delete',annonce.id)">
+              <i class="fa fa-trash  fa-fw " style="font-size:23px"></i>
+            </button>
+          </p>
+        </td>
+      </tr>
+
+    </tbody>
+
+  </table>
+  <pre>{{closeResult}}</pre>
+  <div *ngIf="display=='mosaic'">
+
+    <div class="row col-md-12">
+      <div *ngFor="let annonce of annonces| contrat:contrat:annonces  |   filter :search  |   title :ftitle | fdate:fdispo | orderBy: order : reverse |paginate: { itemsPerPage: y, currentPage: p }">
+
+        <div class="card" style="width: 18rem; margin: 12px">
+          <div class="card-body">
+
+            <h5 class="card-title">{{annonce.title|limite:50}}...</h5>
+            <h6>{{annonce.date|date}}</h6>
+            <p class="card-text">{{annonce.description|limite:100}}...</p>
+
+            <a (click)="goTo('edit',annonce.id)" class="card-link">Editer</a>
+            <a (click)="goTo('delete',annonce.id)" class="card-link">Supprimer</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <span>Nombre d'annonces par page: </span>
+          <input type="number" min="1" max="{{ymax}}" [(ngModel)]="y">
+        </div>
+        <pagination-controls class="d-flex justify-content-center" (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #delete let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Supprimer l'annonce</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Vous êtes sur de vouloir supprimer l'annonce?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Ok click')">Confirmer</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('cancel click')">Annuler</button>
+    </div>
+  </ng-template>
