@@ -11,26 +11,26 @@ import { AdvertService } from "./advert.service";
 @Injectable()
 
 export class PostService {
-  Post(username:string,idAdvert:string) {
+
+  postSub: Subscription;
+
+  constructor(private http: HttpClient, private userService: UserService, private advertService: AdvertService) { }
+  Post(username: string, idAdvert: string) {
     let httpParams = new HttpParams()
-                        .set('username', username)
-	                .set('idadvert', idAdvert);
-   return this.http.get<any[]>('http://127.0.0.1:8000/Post', {
-        params: httpParams,
+      .set('username', username)
+      .set('idadvert', idAdvert);
+    return this.http.put<any[]>('https://api.railsinfo.fr/Application', {
+      params: httpParams,
     });
   }
-    postSub: Subscription;
-
-    constructor(private http: HttpClient,private userService:UserService,private advertService:AdvertService) { }
-
-isPost(username:string,idAdvert:string){
+  isPost(username: string, idAdvert: string) {
     let httpParams = new HttpParams()
-                        .set('username', username)
-	                .set('idadvert', idAdvert);
-   return this.http.get<any[]>('http://127.0.0.1:8000/isPost', {
-        params: httpParams,
+      .set('username', username)
+      .set('idadvert', idAdvert);
+    return this.http.get<any[]>('https://api.railsinfo.fr/Application', {
+      params: httpParams,
     });
-   
+
   }
 
 

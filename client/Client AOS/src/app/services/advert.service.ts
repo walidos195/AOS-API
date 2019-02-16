@@ -1,8 +1,7 @@
 import { Subject, Observable } from "rxjs";
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import 'rxjs/add/operator/catch';
-import { Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+
 export interface Advert {
     id: number;
     title: string;
@@ -14,46 +13,45 @@ export interface Advert {
     duree: string;
     time: string;
     code: string;
-}
-@Injectable()
+  }
+  @Injectable()
 
 export class AdvertService {
-
-    constructor(private http: HttpClient,private router:Router) { }
-
-
-
-  
-
-    getAdvert(): Observable<any[]> {
-
-        return this.http.get<Advert[]>('http://127.0.0.1:8000/Annonce'   )
-      .catch(this.handleError);
-    }
-
-    getAdvertId(id): Observable<any[]> {
-        return this.http.get<Advert[]>('http://127.0.0.1:8000/Annonce/'+id+'')
-        
-          .catch(this.handleError);
-    }
-    setAdvert(id,advert): Observable<any[]> {
-        return this.http.put<Advert[]>('http://127.0.0.1:8000/Annonce/'+id+'',advert)
-          .catch(this.handleError);;
-    }  
-    addAdvert(advert): Observable<any[]> {
-        return this.http.post<Advert[]>('http://127.0.0.1:8000/Annonce',advert  )
-          .catch(this.handleError);
-    }
-    deleteAdvert(id): Observable<any[]> {
-        return this.http.delete<Advert[]>('http://127.0.0.1:8000/Annonce/'+id+'' )
-          .catch(this.handleError);
-    }
     
-      private handleError (error: Response | any) {
-        console.error('ApiService::handleError', error);
-        alert("Erreur "+error.status+": "+error.statusText);
-        return Observable.throw(error);
+    constructor(private http:HttpClient){}
+
+
+
+    advertSubject=new Subject<any[]>();
+     private _advert: Advert[];
+     private isLoad:boolean;
+      public getIsLoad() {
+          return this.isLoad;
       }
-     
+      public setIsLoad(value) {
+          this.isLoad = value;
+      }
+      public setadvert(value: Advert[]) {
+          this._advert = value;
+      }
+      public getAdverts(): Advert[] {
+        
+          return this._advert;
+      }
+      public setAdverts() {
+        this.getAdvert().subscribe(
+            (response:any[]) => {
+            this._advert=response;
+            }
+          );
+          this.emitAnnonceSubject();
+      }
+    emitAnnonceSubject(){
+        this.advertSubject.next(this._advert);
+    }
+   
+    getAdvert():Observable<any[]> {
+        return    this.http.get<Advert[]>('https://api.railsinfo.fr/Annonce');}
+
 
 }
