@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}RIUserBundle:User:Register{% endblock %}
+{% block stylesheets %}
+    {% include 'RIAdvertBundle:Commun:bootstrap.html.twig' %}
+{% endblock %}
+{% block body %}
+    {% include 'RIAdvertBundle:Commun:nav.html.twig' %}
+    {% include 'RIAdvertBundle:Commun:navleft.html.twig' %}
+
+        
+          {% block fos_user_content %}
+
+            {% endblock fos_user_content %}
+        <br>
+        <br>
+        <br>
+            {% include 'RIAdvertBundle:Commun:navright.html.twig' %}
+        
+            {% include 'RIAdvertBundle:Commun:foot.html.twig' %}
+        
+    {% endblock %}

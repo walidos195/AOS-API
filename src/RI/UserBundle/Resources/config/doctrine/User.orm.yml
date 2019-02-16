@@ -1,0 +1,40 @@
+RI\UserBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: RI\UserBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+            nullable: true
+        prenom:
+            type: string
+            length: 255
+            column: Prenom
+            nullable: true
+        
+        telephone:
+            type: string
+            length: 255
+            column: Telephone
+            nullable: true
+     
+        skills:
+            type: array
+            column: Skills
+            nullable: true
+        cv:
+            type: string
+            length: 255
+            nullable: true
+        lettre:
+            type: string
+            length: 255
+            nullable: true
+    lifecycleCallbacks: {  }

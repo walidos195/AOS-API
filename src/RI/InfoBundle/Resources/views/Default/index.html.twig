@@ -1,0 +1,375 @@
+{% extends "::base.html.twig" %} {% block title %}Acceuil{% endblock %} 
+{% block stylesheets %}
+    
+  
+    {% include 'RIAdvertBundle:Commun:bootstrap.html.twig' %}
+{% endblock %} {% block body %}
+
+    <!-- Loader -->
+    
+
+
+    <!-- Railsdiv --> 
+
+ {% include 'RIAdvertBundle:Commun:navi.html.twig' %}
+
+    <!-- Railsdiv --> 
+
+    <!-- Banner Wrapper Start -->
+    <div class="banner-wrapper">
+        <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel"> 
+            <!-- Overlay -->
+            <div class="overlay"></div>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item slides">
+                    <div class="slide-1"><img src="http://railsinfo.fr/img/images/banner1.jpg" alt="Recruite Pro"></div>
+                    <div class="hero">
+                        <h1>We offer <span>1,259</span> job vacancies right now!</h1>
+                        <p>Find your desire one in a minute</p>
+                    </div>
+                </div>
+                <div class="item slides active">
+                    <div class="slide-2"><img src="http://railsinfo.fr/img/images/banner2.jpg" alt="Recruite Pro"></div>
+                    <div class="hero">
+                        <h1>We offer <span>1,259</span> job vacancies right now!</h1>
+                        <p>Find your desire one in a minute</p>
+                    </div>
+                </div>
+                <div class="item slides">
+                    <div class="slide-3"><img src="http://railsinfo.fr/img/images/banner3.jpg" alt="Recruite Pro"></div>
+                    <div class="hero">
+                        <h1>We offer <span>1,259</span> job vacancies right now!</h1>
+                        <p>Find your desire one in a minute</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-arrows"><a class="left carousel-control" href="#bs-carousel" data-slide="prev"><span class="transition3s glyphicon glyphicon-chevron-left fa fa-angle-left"></span></a> <a class="right carousel-control" href="#bs-carousel" data-slide="next"><span class="transition3s glyphicon glyphicon-chevron-right fa fa-angle-right"></span></a></div>
+        </div>
+    </div>
+    <!-- Banner Wrapper End --> 
+
+    <!-- Railsdiv --> 
+
+
+    <!-- Professional Search Start -->
+    <div class="professional-search">
+        <div class="container">
+            <div class="search-bg">
+                <h2>Recherche d'offres</h2>
+                <div class="form">
+                    <form action="{{ path('ri_advert_search_r') }}" method="post" >
+                    <div class="form-group">
+                        <input class="form-control" id="key" placeholder="Offre" name="key" type="text">
+                       
+                    </div>
+
+                        <button  class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Professional Search End --> 
+
+
+    <!-- Railsdiv --> 
+
+    <!-- Callout Wrapper Start -->
+    <div class="callouts-wrapper">
+        <div class="container">
+            <div class="title">
+
+
+                <h2>Nous pouvons vous aider  <span>à trouver un emploi</span></h2>
+                <h3>Si le travail est en ligne, vous le trouverez sur RailsInfo</h3>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="callouts"> <span class="icon"><img src="http://railsinfo.fr/img/images/icon1.png" alt=""></span>
+                        <h3>Finance</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="callouts"> <span class="icon"><img src="http://railsinfo.fr/img/images/icon3.png" alt=""></span>
+                        <h3>Administration</h3>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="callouts"> <span class="icon"><img src="http://railsinfo.fr/img/images/icon4.png" alt=""></span>
+                        <h3>Formations</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="callouts"> <span class="icon"><img src="http://railsinfo.fr/img/images/icon8.png" alt=""></span>
+                        <h3>Développement</h3>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="callouts"> <span class="icon"><img src="http://railsinfo.fr/img/images/icon7.png" alt=""></span>
+                        <h3>Transport / Logistique</h3>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="callouts"> <span class="icon"><img src="http://railsinfo.fr/img/images/icon8.png" alt=""></span>
+                        <h3>Réseaux</h3>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn-one">Parcourir toutes les catégories</a> </div>
+    </div>
+    <!-- Callout Wrapper End --> 
+
+
+    <!-- Railsdiv --> 
+
+
+    <!-- Our counters -->
+    <div class="counters">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="counter">
+                        <div class="counter-icon-box"><img src="http://railsinfo.fr/img/images/counter-icon1.png" alt=""></div>
+                        <div class="counter-right">
+                            <div class="number animateNumber" data-num="80000"> <span>80000</span></div>
+                            <p>Registered Members</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="counter">
+                        <div class="counter-icon-box"><img src="http://railsinfo.fr/img/images/counter-icon2.png" alt=""></div>
+                        <div class="counter-right">
+                            <div class="number animateNumber" data-num="90000"> <span>90000</span></div>
+                            <p>Total Jobs Posted</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="counter last">
+                        <div class="counter-icon-box"><img src="http://railsinfo.fr/img/images/counter-icon3.png" alt=""></div>
+                        <div class="counter-right">
+                            <div class="number animateNumber" data-num="54127"> <span>54127</span></div>
+                            <p>Awesome Company</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our counters End --> 
+
+
+    <!-- Railsdiv --> 
+
+
+    <!-- Latest jobs Wrapper Start -->
+
+    {%if list is not empty%}
+        <div class="latest-jobs-wrapper">
+            <div class="container">
+                <div class="title">
+                    <h2>Dernières  <span>Offres</span></h2>
+
+                </div>
+            </div>
+
+
+
+
+
+            <div class="container">
+                {%if list|length>=0%}
+                    <div class="single-jobs"> <i class="fa fa-twitter"></i>
+                        <div class="job-heading">
+                            <h3>{{ list[0].title[:70]}}...</h3>
+                            <p>{{ list[0].description[:100] }} ...</p>
+                        </div>
+                        <div class="our-location color1"> <span class="fa fa-map-marker" aria-hidden="true"></span>
+                            <div class="location-content">
+                                {#                            <h3>Menlo park, CA</h3>#}
+                                <span><a  href="{{ path('ri_advert_get', {'id': list[0].id}) }}"> {{list[0].type}}  </a></span> </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {%if list|length>=1%}
+                    <div class="single-jobs"> <i class="fa fa-facebook"></i>
+                        <div class="job-heading">
+                            <h3>{{ list[1].title[:70]}}...</h3>
+                            <p>{{ list[1].description[:100] }} ...</p>
+                        </div>
+                        <div class="our-location color2"> <span class="fa fa-map-marker" aria-hidden="true"></span>
+                            <div class="location-content">
+                                {#                            <h3>Menlo park, CA</h3>#}
+                                <span><a  href="{{ path('ri_advert_get', {'id': list[1].id}) }}"> {{list[1].type}}  </a></span> </div>
+
+                        </div>
+                    </div>
+                {% endif %}
+                {%if list|length>=2%}
+                    <div class="single-jobs"> <i class="fa fa-google-plus"></i>
+                        <div class="job-heading">
+                            <h3>{{ list[2].title[:70]}}...</h3>
+                            <p>{{ list[2].description[:100] }} ...</p>
+                        </div>
+                        <div class="our-location color3"> <span class="fa fa-map-marker" aria-hidden="true"></span>
+                            <div class="location-content">
+                                {#                            <h3>Menlo park, CA</h3>#}
+                                <span><a  href="{{ path('ri_advert_get', {'id': list[2].id}) }}"> {{list[2].type}}  </a></span> </div>
+
+                        </div>
+                    </div>
+                {% endif %}
+                {%if list|length>=3%}
+                    <div class="single-jobs"> <i class="fa fa-linkedin"></i>
+                        <div class="job-heading">
+                            <h3>{{ list[3].title[:70]}}...</h3>
+                            <p>{{ list[3].description[:100] }} ...</p>
+                        </div>
+                        <div class="our-location color4"> <span class="fa fa-map-marker" aria-hidden="true"></span>
+                            <div class="location-content">
+                                {#                            <h3>Menlo park, CA</h3>#}
+                                <span><a  href="{{ path('ri_advert_get', {'id': list[3].id}) }}"> {{list[3].type}}  </a></span> </div>
+
+                        </div>
+                    </div>
+                {% endif %}
+                {%if list|length>=4%}
+                    <div class="single-jobs last"> <i class="fa fa-skype"></i>
+                        <div class="job-heading">
+                            <h3>{{ list[4].title[:70]}}...</h3>
+                            <p>{{ list[4].description[:100] }} ...</p>
+                        </div>
+                        <div class="our-location color5"> <span class="fa fa-map-marker" aria-hidden="true"></span>
+                            <div class="location-content">
+                                {#                            <h3>Menlo park, CA</h3>#}
+                                <span><a  href="{{ path('ri_advert_get', {'id': list[4].id}) }}"> {{list[4].type}}  </a></span> </div>
+
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+    {% endif %}
+    <!-- Latest jobs Wrapper End --> 
+
+
+
+    <!-- Railsdiv --> 
+
+    <!-- Testimonials Wrapper Start -->
+    <div class="testimonials-wrapper">
+        <div class="container">
+            <div class="title">
+                <h2>Success <span>Stories</span></h2>
+                <h3>Here you can see</h3>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel"> 
+                    <!-- Testimonials Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Testimonials slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <div class="col-md-8 col-sm-12 col-md-offset-2 col-sm-offset-0 col-xs-offset-0">
+                                <div class="testimonials-main">
+                                    <div class="testimonials-inner"> <i class="fa fa-quote-left"></i>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                        <div class="testimonials-img-main"> </div>
+                                    </div>
+                                    <span class="triangle-down"></span>
+                                    <div class="testimonial-img"> <img src="http://railsinfo.fr/img/images/testimonials1.png" alt=""> </div>
+                                    <div class="testimonials-text">
+                                        <p class="client-name">Client Name</p>
+                                        <p>Designation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-md-8 col-sm-12 col-md-offset-2 col-sm-offset-0 col-xs-offset-0">
+                                <div class="testimonials-main">
+                                    <div class="testimonials-inner"> <i class="fa fa-quote-left"></i>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                        <div class="testimonials-img-main"> </div>
+                                    </div>
+                                    <span class="triangle-down"></span>
+                                    <div class="testimonial-img"> <img src="http://railsinfo.fr/img/images/testimonials2.png" alt=""> </div>
+                                    <div class="testimonials-text">
+                                        <p class="client-name">Client Name</p>
+                                        <p>Designation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-md-8 col-sm-12 col-md-offset-2 col-sm-offset-0 col-xs-offset-0">
+                                <div class="testimonials-main">
+                                    <div class="testimonials-inner"> <i class="fa fa-quote-left"></i>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                        <div class="testimonials-img-main"> </div>
+                                    </div>
+                                    <span class="triangle-down"></span>
+                                    <div class="testimonial-img"> <img src="http://railsinfo.fr/img/images/testimonials3.png" alt=""> </div>
+                                    <div class="testimonials-text">
+                                        <p class="client-name">Client Name</p>
+                                        <p>Designation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonials Wrapper End --> 
+
+
+    <!-- Railsdiv --> 
+
+
+    <!-- Subscribe Wrapper Start -->
+    <div class="subscribe-wrapper">
+        <div class="container">
+            <div class="title">
+                <h2>Newsletter</h2>
+                {#                    <h3>Get weekly top new jobs delivered to your inbox</h3>#}
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-offset-0 subscirbe">
+                    <div class="form">
+                        <div class="form-group">
+                            <input placeholder="Saisir votre adresse Email" id="exampleInputName" class="form-control first" type="text">
+                        </div>
+                        <input class="bttn" value="Enregistrer" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subscribe Wrapper End --> 
+
+    <!-- Railsdiv --> 
+
+
+
+   
+
+
+{% include 'RIAdvertBundle:Commun:footi.html.twig' %}
+{% endblock %}

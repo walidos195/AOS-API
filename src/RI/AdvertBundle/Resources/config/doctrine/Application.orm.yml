@@ -1,0 +1,27 @@
+RI\AdvertBundle\Entity\Application:
+    type: entity
+    table: null
+    repositoryClass: RI\AdvertBundle\Repository\ApplicationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        username:
+            type: string
+            length: 255
+        message:
+            type: string
+            length: 255
+        date:
+            type: datetime
+    lifecycleCallbacks: {  }
+    manyToOne:
+        advert:
+            targetEntity: Advert
+            inversedBy: application
+            joinColumn:
+                name: advert_id
+                referencedColumnName: id

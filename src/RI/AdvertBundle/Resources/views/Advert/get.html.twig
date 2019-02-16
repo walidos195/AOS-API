@@ -1,0 +1,59 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}RIAdvertBundle:Advert:Get{% endblock %}
+{%block stylesheets %}
+    {% include 'RIAdvertBundle:Commun:bootstrap.html.twig' %}
+
+    <link rel="stylesheet" href="{{ asset('css/colapsemenu.css') }}">
+
+{% endblock %}
+{% block body %}
+
+    {% include 'RIAdvertBundle:Commun:nav.html.twig' %}
+
+    {%if app.session.get('postdone')==true%}
+        <div class="alert alert-success alert-dismissible" id="success-alert">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Réussite!</strong> Vous avez postulé pour cette annonce.
+        </div>
+        {{ app.session.set('postdone',false)}}
+       
+    {%endif%}
+    {%if app.session.get('postfail')==true%}
+        <div class="alert alert-danger alert-dismissible" id="success-alert">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Erreur!</strong> Vous avez déjà postulé pour cette annonce.
+        </div>
+        {{ app.session.set('postfail',false)}}
+       
+    {%endif%}
+    
+    <div class="col-md-12 col-sm-12  text-left content"> 
+        <button type="button" id="sidebarCollapse" class="navbar-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <br>
+        <h1>{{advert.title}}</h1>
+       
+        {{advert.detail|raw}}
+    </div>
+    {% include 'RIAdvertBundle:Commun:foot.html.twig' %}
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alert").slideUp(500);
+            });
+
+        });
+
+    </script>
+{% endblock %}

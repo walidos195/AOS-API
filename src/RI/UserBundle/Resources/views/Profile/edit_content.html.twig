@@ -1,0 +1,54 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+  
+  <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{app.user.nom}} {{app.user.prenom}}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div>
+
+
+
+                    <div class=" col-md-9 col-lg-9 "> 
+                        <table class="table table-user-information">
+                            <tbody>
+                                <tr>
+                                    <td>              {{ form_label(form.username, "Pseudo") }}{{ form_errors(form.username) }}</td>
+                                    <td>{{form_widget(form.username, {'attr': {'class': 'form-control'}})}}</td>
+                                </tr>
+                                
+                               
+                                <tr>
+                                    <td>              {{ form_label(form.nom, "Le nom") }}{{ form_errors(form.nom) }}</td>
+                                    <td>{{form_widget(form.nom, {'attr': {'class': 'form-control'}})}}</td>
+                                </tr>
+                                <tr>
+                                    <td>              {{ form_label(form.prenom, "Le pénom") }}{{ form_errors(form.prenom) }}</td>
+                                    <td>{{form_widget(form.prenom, {'attr': {'class': 'form-control'}})}}</td>
+                                </tr>
+                                <tr>
+                                <tr>
+                                    <td>              {{ form_label(form.telephone, "Téléphone") }}{{ form_errors(form.telephone) }}</td>
+                                    <td>{{form_widget(form.telephone, {'attr': {'class': 'form-control'}})}}</td>
+                                </tr>
+                                <tr>
+                                    <td>              {{ form_label(form.mail, "E-mail") }}{{ form_errors(form.mail) }}</td>
+                                    <td>{{form_widget(form.mail, {'attr': {'class': 'form-control'}})}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ form_label(form.skills, "Les compétences") }}{{ form_errors(form.skills) }}</td>
+                                    <td>{{form_widget(form.skills)}}</td>
+                                </tr>
+
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        {{ form_widget(form.sub, {'attr': {'class': 'btn btn-primary'}}) }}
+  
+{{ form_end(form) }}

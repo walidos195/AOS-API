@@ -1,0 +1,86 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Votre Profil{% endblock %}
+{% block stylesheets %}
+
+    {% include 'RIAdvertBundle:Commun:bootstrap.html.twig' %}
+{% endblock %}
+{% block body %}
+    {% include 'RIAdvertBundle:Commun:nav.html.twig' %}
+     <div class="col-lg-push-1 col-md-10 col-sm-10 text-left contentp"> 
+
+
+        <h1>Votre Profil:</h1>
+        <div  >
+   
+   
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">{{user.nom}} {{user.prenom}}</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="img/avatar.png" class="img-circle img-responsive"> </div>
+                
+                
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Pseudo:</td>
+                        <td>{{user.username}}</td>
+                      </tr>
+                      <tr>
+                        <td>Nom:</td>
+                        <td>{{user.nom}}</td>
+                      </tr>
+                      <tr>
+                        <td>Prénom</td>
+                        <td>{{user.prenom}}</td>
+                      </tr>
+                      <tr>
+                        <tr>
+                        <td>Téléphone</td>
+                        <td>{{user.telephone}}</td>
+                      </tr>
+                      <tr>
+                        <td>Emaill</td>
+                        
+                        <td><a href="maillto:{{user.email}}">{{user.email}}</a></td>
+                      </tr>
+                      <tr>
+                        <td>CV</td>
+                        <td><a href="{{ asset('uploads/CV/' ~ user.cv) }}">Votre CV</a></td>
+                      </tr>
+                      <tr>
+                        
+                        <td>Lettre de motivation</td>
+                        <td><a href="{{ asset('uploads/Lettre/' ~ user.lettre) }}">Votre Lettre de motivation</a></td>
+                      </tr>
+                        
+                           
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                  
+                  <a href="{{ path('ri_user_setprofil', {'username': app.user.username}) }}" class="btn btn-primary">Modifier le profil</a>
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                        <span class="pull-right">
+                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        </span>
+                    </div>
+            
+          </div>
+        </div>
+            
+            {% include 'RIAdvertBundle:Commun:navright.html.twig' %}
+        
+            {% include 'RIAdvertBundle:Commun:foot.html.twig' %}
+        
+    {% endblock %}

@@ -1,0 +1,120 @@
+
+<div id="dvLoading" ></div>
+
+<header class="wow fadeInDown affix-top" data-offset-top="197" data-spy="affix" style="visibility: visible; margin-bottom: 15px" >
+    <div class="logo-wrapper"> 
+        <!-- Logo -->
+        <div class="container">
+            <div class="row"> 
+                <!-- Logo -->
+                <div class="col-sm-12 col-md-3 hidden-xs"> 
+                    <a href="{{ path('ri_info_homepage') }}"><img src="http://railsinfo.fr/img/Logo.png"  alt="railsinfo"></a> 
+                </div>
+                <!-- Navigation -->
+                <div class="col-sm-12 col-md-9">
+                    <nav class="navbar navbar-default pull-right"> 
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                            <a class="navbar-brand" href="{{ path('ri_info_homepage') }}"><img src="http://railsinfo.fr/img/Logo.png" alt="rails info"></a> </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="{{ path('ri_info_homepage') }}">Acceuil</a></li>
+                                <li><a href="{{ path('ri_info_apropos') }}">À propos</a></li>
+                                <li><a href="{{ path('ri_advert_list') }}">Liste des offres</a></li>
+                                   <li><a href="{{ path('ri_info_contact') }}">Contactez-nous</a></li>
+                                    {% if app.user  %}
+                                    <li class="visible-xs"><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
+                                    <li class="visible-xs"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                                    {% else %}
+                                    <li class="visible-xs"><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                                    <li class="visible-xs"><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+                                    {% endif %}
+
+
+
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        {% if app.user  %}
+                            <div class="user"><a href="{{ path('fos_user_profile_show') }}"><img src="http://railsinfo.fr/img/images/user-icon.png" alt=""></a></div>
+                            <div class="login pull-right hidden-xs "> <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></div>
+
+                        {% else %}
+                            <div class="login pull-right hidden-xs "> <a href="{{ path('fos_user_security_login') }}">Connexion</a></div>
+                            <div class="login pull-right hidden-xs "> <a href="{{ path('fos_user_registration_register') }}">Inscription</a></div>
+                        {% endif %}
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+                  
+<section>
+    <div class="wrapper">
+        {% if app.request.attributes.get('_route')=="ri_advert_get"%}
+            <nav id="sidebar"style="margin-top: -15px">
+                <div class="sidebar-header">
+                    <h3>Infos </h3>
+                </div>
+
+                <ul class="list-unstyled components">
+
+                    <li>
+                        <a href="#type" data-toggle="collapse" aria-expanded="true">Type de contrat</a>
+                        <ul class="collapse in list-unstyled" id="type">
+                            <li><p>{{advert.type}}</p></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#publie" data-toggle="collapse" aria-expanded="true">Publiée</a>
+                        <ul class="collapse in list-unstyled" id="publie">
+                            <li><p>{{nbjour}}</p></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#duree" data-toggle="collapse" aria-expanded="true">Durée</a>
+                        <ul class="collapse in list-unstyled" id="duree">
+                            <li><p>{{advert.duree}} mois</p></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#begin" data-toggle="collapse" aria-expanded="true">Début du contrat</a>
+                        <ul class="collapse in list-unstyled" id="begin">
+                            <li><p>{{advert.begin.format('d/m/Y')}}</p></li>
+
+                        </ul>
+
+                    </li>
+                </ul>
+
+                <ul class="list-unstyled CTAs">
+
+                    {%if app.user  %}
+                        {%if posted == 0  %}
+
+                            <li><a href="{{ path('ri_application_post', {'id': advert.id}) }}" class="postuler">Postuler</a></li>
+                        {%else%}
+                            <li><a  class="postuler">Postulé!</a></li>
+
+                        {%endif%}
+                    {%else%}
+                        <li><p>Une connexion est nécessaire pour postuler</pa></li>
+                        <li> <a href="{{ path('fos_user_security_login') }}" class="postuler">Connexion</a></li>
+                        <li> <a href="{{ path('fos_user_registration_register') }}" class="postuler">Inscription</a></li>
+
+                    {%endif%}
+                    
+                </ul>
+            </nav>
+
+        {% endif %}
+        <div class="container text-center"    > 
+            <!-- Sidebar Holder -->
+
+

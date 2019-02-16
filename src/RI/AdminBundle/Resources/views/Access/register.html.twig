@@ -1,0 +1,95 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Page d'inscription Pour le recruteur{% endblock %}
+{% block stylesheets %}
+    {% include 'RIAdvertBundle:Commun:bootstrap.html.twig' %}
+{% endblock %}
+{% block body %}
+    {% include 'RIAdvertBundle:Commun:nav.html.twig' %}
+     <div class="col-lg-push-1 col-md-10 col-sm-10 text-left contentp"> 
+
+    <h1>Page d'inscription Pour le recruteur</h1>
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.nom, "Le nom", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.nom) }}
+        <div class="col-sm-10">
+            {# Génération de l'input. #}
+            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.prenom, "Le Prènom", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.prenom) }}
+        <div class="col-sm-10">
+            {# Génération de l'input. #}
+            {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.username, "Pseudo", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.username) }}
+        <div class="col-sm-10">
+            {# Génération de l'input. #}
+            {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.mail, "L'adresse e-mail", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.mail) }}
+        <div class="col-sm-10">
+            {# Génération de l'input. #}
+            {{ form_widget(form.mail, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.password, "Le mot de passe", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.password) }}
+        <div class="col-sm-10">
+            {# Génération de l'input. #}
+            {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.telephone, "Le numéro de telephone", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.telephone) }}
+        <div class="col-sm-10">
+            {# Génération de l'input. #}
+            {{ form_widget(form.telephone, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        </div>
+    <div class="text-center"> 
+        {{ form_widget(form.sub, {'attr': {'class': 'btn btn-primary'}}) }}
+    </div>
+    {{form_end(form)}}
+    <br>
+    <br>
+    <br>
+    {% include 'RIAdvertBundle:Commun:navright.html.twig' %}
+
+    {% include 'RIAdvertBundle:Commun:foot.html.twig' %}
+
+{% endblock %}

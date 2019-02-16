@@ -1,0 +1,43 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}RIAdvertBundle:Application:List{% endblock %}
+
+{%block stylesheets %}
+    {% include 'RIAdvertBundle:Commun:bootstrap.html.twig' %}
+{% endblock %}
+{% block body %}
+    {% include 'RIAdvertBundle:Commun:nav.html.twig' %}
+     <div class="col-lg-push-1 col-md-10 col-sm-10 text-left contentp"> 
+           
+    <h1>Liste des postulants</h1>
+    
+        {%if advert is not empty%}
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h3 >{{ advert.title }}</h3></div>
+                    <div class="panel-body"><p >{{ advert.description }}</p></div>
+                </div>
+                <br>
+            {% else %}
+            <p>Il n'y a aucune annonce pour l'instant.</p>
+        {% endif %}
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3 >Liste des postulants</h3></div><ul>
+        {%if application is not empty%}
+            {% for app in application %}
+                
+            <li> <a href="{{ path('ri_user_profil', {'username': app.username}) }}">{{ app.username }}</a>
+                     {{app.date.format("d/m/Y H:i:s")}} </li>
+                <br>
+                {% endfor %}
+            {% else %}
+            <p>Il n'y a aucun postulant pour l'instant.</p>
+            {% endif %}</ul>
+                </div>
+
+    
+
+            {% include 'RIAdvertBundle:Commun:navright.html.twig' %}
+        
+            {% include 'RIAdvertBundle:Commun:foot.html.twig' %}
+        
+{% endblock %}

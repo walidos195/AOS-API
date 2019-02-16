@@ -1,0 +1,27 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Qui sommes-nous?{% endblock %}
+{% block stylesheets %}
+
+    {% include 'RIAdvertBundle:Commun:bootstrap.html.twig' %}
+{% endblock %}
+{% block body %}
+    {% include 'RIAdvertBundle:Commun:nav.html.twig' %}
+     <div class="col-lg-push-1 col-md-10 col-sm-10 text-left contentp"> 
+
+    <style type="text/css">p{
+            color: #313036;
+            font-size: 150.5%;
+            line-height: 1.66666667em;
+            font-family: Georgia,Times,"Times New Roman",serif;
+        }</style>
+    <h1>Qui sommes-nous?</h1>
+    <p>Nous sommes une société qui propose des services et des conseils dans le domaine de l'électronique, l'informatique et la mécanique.</p>
+    <p>Nous sommes présents dans plusieurs secteurs comme le ferroviaire, l'aéronautique, l'automobile, la métallurgie, la médecine et l'Energie.</p>
+    <p>Pour des raisons historiques, RAILSINFO entretient des liens étroits avec des laboratoires de grandes écoles et des universités en région parisienne mais aussi à l'étranger. C'est pourquoi, nous constituons une passerelle intelligente entre deux entités complémentaires : les laboratoires de R&D publics et l'industrie. Un client souhaitant faire appel à une étude universitaire approfondie, proposer un sujet de thèse ou sous-traiter des essais à coûts justifiés, peut être accompagné efficacement par RAILSINFO. Inversement, les universitaires disposant de travaux potentiellement transférables vers l'industrie, peuvent informer RAILSINFO qui détermine judicieusement les clients cibles. Enfin RAILSINFO, de part sa forte culture scientifique, déposera et proposera continuellement des brevets d'invention transférables au secteur industriel.
+    </p>
+    {% include 'RIAdvertBundle:Commun:navright.html.twig' %}
+
+    {% include 'RIAdvertBundle:Commun:foot.html.twig' %}
+
+{% endblock %}

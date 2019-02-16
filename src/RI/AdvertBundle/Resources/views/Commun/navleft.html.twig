@@ -1,0 +1,49 @@
+{#<div class="col-md-2 col-sm-2 sidenav">
+    
+        {% if is_granted('ROLE_USER') %}
+
+            {% elseif is_granted('ROLE_ADMIN') %}
+                
+                <span class="login  "> <a href="{{ path('ri_advert_add') }}">Nouvelle offre </a></span>
+                           
+           
+            {%endif%}
+
+
+
+            <div class="sidenav">
+
+    {% if app.request.attributes.get('_route')=="ri_advert_get"%}
+        <div class="well">
+
+
+            {% if is_granted('ROLE_USER') %}
+
+                <a class="btn btn-default btn-sm" href="{{ path('ri_application_post', {'id': advert.id, 'username': app.user.username}) }}"> Postuler  </a>
+            {% elseif is_granted('ROLE_ADMIN') %}
+                <a  href="{{ path('ri_advert_update', {'id': advert.id}) }}"> Modifier  </a><br>
+                <a  href="{{ path('ri_advert_delete', {'id': advert.id}) }}"> Supprimer  </a><br>
+                <a  href="{{ path('ri_application_view', {'id': advert.id}) }}"> Liste des postulants  </a><br>
+           
+            {% else %}
+            {%endif%}
+
+        </div>
+        <div class="well">
+            <b>Type de contrat:</b>
+            <p>{{advert.type}}</p>
+
+            <b>Publiée:</b>
+            <p>{{nbjour}}</p>
+
+
+            <b>Durée:</b>
+            <p>{{advert.duree}} mois</p>
+
+            <b>Début du contrat:</b>
+            <p>{{advert.begin.format('d/m/Y')}}</p>
+        </div>
+    {% endif%}
+</div>
+            </div>#}
+ <div class="col-lg-push-1 col-md-10 col-sm-10 text-left contentp"> 

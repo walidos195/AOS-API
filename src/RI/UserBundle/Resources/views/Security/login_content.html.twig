@@ -1,0 +1,39 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+ <form class="modal-content animate" action="{{ path("fos_user_security_check") }}" method="post">
+            <div class="imgcontainer">
+{#                <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>#}
+                <img src="../img/img_avatar2.png" alt="Avatar" class="avatar">
+            </div>
+           
+            <div class="container">
+                 {% if error %}
+                <div style="color:red;" role="alert">
+
+                    <strong>Echec!</strong>  {{ error.message }}
+                </div>
+            {% endif %}
+                <label for="_username"><b>Username</b></label>
+                
+                <input type="text" placeholder="Enter Username" id="username" name="_username" value="{{ last_username }}" required>
+
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="password" name="_password"required>
+
+                <button id="_submit" name="_submit" value="Connexion"  type="submit">Login</button>
+              <label>
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                     Remember me
+                </label>
+            </div>
+            <div class="container" style="background-color:#f1f1f1">
+{#                <button type="button" onclick="document.getElementById('id01').style.display = 'none'" class="cancelbtn">Cancel</button>#}
+                <div class="psw">Forgot <a href="#">password?</a></div>
+            </div>
+
+
+
+
+        </form>

@@ -1,0 +1,13 @@
+
+ri_user_nglogin:
+    path:     /NgLogin
+    defaults: { _controller: RIUserBundle:User:NgLogin }
+ri_user_ngregister:
+    path:     /NgRegister
+    defaults: { _controller: RIUserBundle:User:NgRegister }
+ri_user:
+    path:     /Users
+    defaults: { _controller: RIUserBundle:User:Users }
+ri_user_profil:
+    path:     /User/{username}
+    defaults: { _controller: RIUserBundle:User:User }

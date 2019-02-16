@@ -1,0 +1,34 @@
+RI\AdvertBundle\Entity\Advert:
+    type: entity
+    table: null
+    repositoryClass: RI\AdvertBundle\Repository\AdvertRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        description:
+            type: text
+        detail:
+            type: text
+        type:
+            type: string
+            length: 255
+        duree:
+            type: integer
+        time:
+            type: time
+        date:
+            type: string
+        begin:
+            type: string
+      
+        code:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

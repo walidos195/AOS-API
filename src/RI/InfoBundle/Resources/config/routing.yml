@@ -1,0 +1,14 @@
+ri_info_homepage:
+    path:     /
+    defaults: { _controller: RIInfoBundle:Default:index }
+
+ri_info_home:
+    path:     /Home
+    defaults: { _controller: RIInfoBundle:Presentation:Home }
+
+ri_info_apropos:
+    path:     /Apropos
+    defaults: { _controller: RIInfoBundle:Presentation:Apropos }
+ri_info_contact:
+    path:     /Contact
+    defaults: { _controller: RIInfoBundle:Presentation:Contact }

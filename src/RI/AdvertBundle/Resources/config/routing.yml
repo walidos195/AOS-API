@@ -1,0 +1,20 @@
+
+
+
+ri_advert_put_delete:
+    path:     /Annonce/{id}
+    defaults: { _controller: RIAdvertBundle:Advert:Annonceid }
+
+ri_advert_get_post:
+    path:     /Annonce
+    defaults: { _controller: RIAdvertBundle:Advert:Annonce }
+
+    
+ri_application_postng:
+    path:     /Application
+    defaults: { _controller: RIAdvertBundle:Application:ngPost }
+
+
+ri_application_view:
+    path:     /Applications
+    defaults: { _controller: RIAdvertBundle:Application:View }

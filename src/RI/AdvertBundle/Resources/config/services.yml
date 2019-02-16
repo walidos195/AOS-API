@@ -1,0 +1,4 @@
+services:
+#    ri_advert.example:
+#        class: RI\AdvertBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

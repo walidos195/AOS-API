@@ -1,0 +1,126 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'form-horizontal'}}) }}
+  
+
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.nom, "Le nom", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.nom) }}
+            <div class="col-sm-10">
+                {# Génération de l'input. #}
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+            
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.prenom, "Le Prènom", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.prenom) }}
+            <div class="col-sm-10">
+                {# Génération de l'input. #}
+                {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.username, "Pseudo", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.username) }}
+            <div class="col-sm-10">
+                {# Génération de l'input. #}
+                {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+            
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.email, "L'adresse e-mail", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.email) }}
+            <div class="col-sm-10">
+                {# Génération de l'input. #}
+                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+            
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.plainPassword.first, "Le mot de passe", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.plainPassword.first) }}
+            <div class="col-sm-10">
+                {# Génération de l'input. #}
+                {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+            <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.plainPassword.second, "Confirmer le mot de passe", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.plainPassword.second) }}
+            <div class="col-sm-10">
+                {# Génération de l'input. #}
+                {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+            
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.telephone, "Le numéro de telephone", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.telephone) }}
+            <div class="col-sm-10">
+                {# Génération de l'input. #}
+                {{ form_widget(form.telephone, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+            
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.cv, "Le CV", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.cv) }}
+            <div class="col-sm-10">
+                {# Génération de l'input. #}
+                {{ form_widget(form.cv) }}
+            </div>
+        </div>
+            
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.lettre, "La lettre de motivation", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.lettre) }}
+            <div class="col-sm-10">
+                {# Génération de l'input. #}
+                {{ form_widget(form.lettre) }}
+            </div>
+        </div>
+            
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.skills, "Les compétences", {'label_attr': {'class': 'col-sm-2 control-label '}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.skills) }}
+            <div class="col-sm-10">
+                {# Génération de l'input. #}
+                {{ form_widget(form.skills) }}
+            </div>
+        </div>
+            <div class="text-center"> 
+        {{ form_widget(form.sub, {'attr': {'class': 'btn btn-primary'}}) }}
+            </div>
+        {{form_end(form)}}
